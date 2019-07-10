@@ -114,8 +114,8 @@ echo '{
             ],
             "imageDetails": [
                 {
-                    "id": "e9524a56-1f29-49cb-a445-677326b2d65c",
-                    "imageUrl": "/api/devices/images/e9524a56-1f29-49cb-a445-677326b2d65c",
+                    "id": "e713892f-ed87-42af-b5ac-0d85f8a27191",
+                    "imageUrl": "/api/devices/images/e713892f-ed87-42af-b5ac-0d85f8a27191",
                     "sourceType": "base64"
                 }
     ]
@@ -215,8 +215,8 @@ echo '{
             },
 	"imageDetails": [
                 {
-                    "id": "0082dcdc-2c3b-49a8-a49a-ba63b092b4d2",
-                    "imageUrl": "/api/devices/images/0082dcdc-2c3b-49a8-a49a-ba63b092b4d2",
+                    "id": "b5f36ba0-e09d-4d22-ab38-329650403620",
+                    "imageUrl": "/api/devices/images/b5f36ba0-e09d-4d22-ab38-329650403620",
                     "sourceType": "base64"
                 }
             ],
