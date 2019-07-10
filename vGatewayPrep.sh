@@ -35,7 +35,7 @@ read -n 1 -s -r -p "Press any key to continue"
 ################################################################################
 ## Created AGENTDATAPATH directories if they don't exist already
 ################################################################################
-if $AGENTDATAPATH; then
+if ls $AGENTDATAPATH; then
     echo "$AGENTDATAPATH directory already present"
 else 
     sudo mkdir /opt/vmware
