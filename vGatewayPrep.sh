@@ -269,4 +269,4 @@ echo 2')' "./DefaultClient enroll --auth-type=BASIC --template=vGatewayTemplate-
 ## Notify Student that Script is complete
 #####################################################################################
 echo Script is complete, please refer back to your Lab Guide for next Steps
-read -n 1 -s -r -p "Press any key to continue"
+
