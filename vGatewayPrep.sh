@@ -25,12 +25,24 @@ PULSEINSTANCE=iotc003-pulse.vmware.com
 # Ask User for their first name
 clear
 echo Hello, who do I have the pleasure of interacting with today?
-read -p 'First Name: ' firstname
+read -p 'Please enter your First Name: ' firstname
 echo It\'s nice to meet you, $firstname!
 echo Please enter your favorite single digit number
 read -p 'Number: ' number
 echo Thank you, we are now going to programatically create a few things in the Pulse Console using Rest API calls.
 read -n 1 -s -r -p "Press any key to continue"
+
+################################################################################
+## Created AGENTDATAPATH directories if they don't exist already
+################################################################################
+if $AGENTDATAPATH; then
+    echo "$AGENTDATAPATH directory already present"
+else 
+    sudo mkdir /opt/vmware
+    sudo mkdir /opt/vmware/iotc-agent
+    sudo mkdir /opt/vmware/iotc-agent/data
+    sudo mkdir /opt/vmware/iotc-agent/data/data
+fi
 
 ################################################################################
 ## Rest API Calls to Create Pulse Templates
@@ -48,7 +60,7 @@ APIVersion=$(curl --request GET \
 | awk -F ':' '{print $2'} | awk -F ',' '{print $1}' | sed -e 's/"//g')
 
 # Use Basic Auth to retrieve Bearer Token
-BearerToken=$(curl --user iotken:VMware1! --request GET \
+BearerToken=$(curl --user ausworkshop@pulse.local:VMware1! --request GET \
 --url https://$PULSEINSTANCE:443/api/tokens \
 --header "Accept: application/json;api-version=$APIVersion" \
 --header 'Cache-Control: no-cache' \
@@ -239,17 +251,22 @@ echo '{
 # Write Gateway Template Name to file so we can use this to modifyCommandFetchInterval later
 echo "vGatewayTemplate-$firstname-$number" > ${AGENTDATAPATH}//$TEMPLATE.name
 
-################################################################################
-## CD to Pulse /bin directory and provide syntax for user to onboard Gateway
-################################################################################
-clear
-echo Type the following commands to cd into the Pulse Agent directory,
-echo and utilize the DefaultClient to onboard your vGateway using BASIC Auth
-echo 1')' cd /opt/vmware/iotc-agent/bin
-echo 2')' "./DefaultClient enroll --auth-type=BASIC --template=vGatewayTemplate-$firstname-$number --name=vGateway-$firstname-$number --username=<your username@pulse.local>"
+######################################################################################
+## Write Onboard Syntax to Text File that Students can reference during Onboard Lesson
+######################################################################################
+echo Type the following commands to cd into the Pulse Agent directory, >> onboardSyntax.txt
+echo and utilize the DefaultClient to onboard your vGateway using BASIC Auth >> onboardSyntax.txt
+echo 1')' cd /opt/vmware/iotc-agent/bin >> onboardSyntax.txt
+echo 2')' "./DefaultClient enroll --auth-type=BASIC --template=vGatewayTemplate-$firstname-$number --name=vGateway-$firstname-$number --username=<your username@pulse.local>" >> onboardSyntax.txt
 
-################################################################################
-## Enroll Gateway
-################################################################################
+#####################################################################################
+## Enroll Gateway (Not used during the 'Getting Started' Lesson)
+#####################################################################################
 #sudo echo -n "VMware1!" > /tmp/passwd
 #sudo ${AGENTBINPATH}DefaultClient enroll --auth-type=BASIC --template=$TEMPLATE --name=${HOSTNAME} --username=ken@iotken.com --password=file:/tmp/passwd
+
+#####################################################################################
+## Notify Student that Script is complete
+#####################################################################################
+echo Script is complete, please refer back to your Lab Guide for next Steps
+read -n 1 -s -r -p "Press any key to continue"
