@@ -254,10 +254,8 @@ echo "vGatewayTemplate-$firstname-$number" > ${AGENTDATAPATH}//$TEMPLATE.name
 ######################################################################################
 ## Write Onboard Syntax to Text File that Students can reference during Onboard Lesson
 ######################################################################################
-echo Type the following commands to cd into the Pulse Agent directory, >> onboardSyntax.txt
-echo and utilize the DefaultClient to onboard your vGateway using BASIC Auth >> onboardSyntax.txt
-echo 1')' cd /opt/vmware/iotc-agent/bin >> onboardSyntax.txt
-echo 2')' "./DefaultClient enroll --auth-type=BASIC --template=vGatewayTemplate-$firstname-$number --name=vGateway-$firstname-$number --username=<your username@pulse.local>" >> onboardSyntax.txt
+echo Type the following commands to onboard your vGateway using BASIC Auth >> onboardSyntax.txt
+echo 1')' "./DefaultClient enroll --auth-type=BASIC --template=vGatewayTemplate-$firstname-$number --name=vGateway-$firstname-$number --username=<your username@pulse.local>" >> onboardSyntax.txt
 
 #####################################################################################
 ## Enroll Gateway (Not used during the 'Getting Started' Lesson)
