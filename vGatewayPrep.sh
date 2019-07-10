@@ -17,7 +17,7 @@ AGENTBINPATH="/opt/vmware/iotc-agent/bin/"
 AGENTDATAPATH="/opt/vmware/iotc-agent/data/data/"
 AGENTCONFPATH="/opt/vmware/iotc-agent/conf/"
 TEMPLATE=vGatewayTemplate
-PULSEINSTANCE=iotc003-pulse.vmware.com
+PULSEINSTANCE=iotc003.vmware.com
 
 ################################################################################
 ## User Interaction
