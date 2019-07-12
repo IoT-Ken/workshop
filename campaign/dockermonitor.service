@@ -1,0 +1,15 @@
+[Unit]
+Description=DockerMonitorService
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/dockermonitor
+ExecStart=/opt/dockermonitor/dockermonitor.sh
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

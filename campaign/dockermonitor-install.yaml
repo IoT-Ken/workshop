@@ -1,0 +1,15 @@
+package:
+    name: DockerMonitor-Install
+    description: Configure DockerMonitor Service (extracts files, configures Linux service)
+    version: 1.0.0
+    manifest:
+        headlessExecution: true
+        lifecycle:
+            -   phase: execute
+                action: dockermonitor-configure.sh
+
+    attachments:
+        -   path: dockermonitor-configure.sh
+        -   path: dockermonitor.sh
+        -   path: dockermonitor.service
+
