@@ -18,7 +18,7 @@
 AGENTBINPATH="/opt/vmware/iotc-agent/bin/"
 AGENTDATAPATH="/opt/vmware/iotc-agent/data/data/"
 DEVICEID=$(cat ${AGENTDATAPATH}deviceIds.data | awk -F '^' '{print $1}')
-TEMPLATE=Docker-Template
+TEMPLATE=$(cat ${AGENTDATAPATH}DockerTemplate.name)
 
 #Start While Loop
 while true; do
