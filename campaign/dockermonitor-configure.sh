@@ -30,7 +30,8 @@ if [ $? -eq 0 ]; then
 else
     echo "Docker is not installed, installing Docker" >> /tmp/campaign.log 
     yes | sudo apt-get update
-    sudo curl -sSL https://get.docker.com | sh
+    sudo curl -sSL https://get.docker.com | sh &
+    sleep 30
 fi
 
 ################################################################################
