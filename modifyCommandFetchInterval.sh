@@ -36,7 +36,6 @@ BearerToken=$(curl --user ausworkshop@iotken.com:VMware1! --request GET \
 --header 'Content-Type: application/json' \
 --header "'Host: $PULSEINSTANCE:443'" \
 --header 'accept-encoding: gzip, deflate' \
---header 'cache-control: no-cache' \
 | grep accessToken | awk -F ':' '{print $2}' | awk -F ',' '{print $1}' | sed -e 's/"//g' | tr -d '\n')
 
 # Modify commandFetchIntervals value to 3 seconds
@@ -69,6 +68,5 @@ echo '{
   Content-Type:application/json \
   Host:$PULSEINSTANCE:443 \
   accept-encoding:'gzip, deflate' \
-  cache-control:no-cache \
   content-length:701 
   
