@@ -135,6 +135,9 @@ echo '{
 # relationship when creating vGateway Template
 DOCKERTEMPLATEID=$(cat ${AGENTDATAPATH}/DockerTemplate.id | awk -F ':' '{print $2}' | sed -e 's/"//g' | sed -e 's/}//g')
 
+# Write Docker Template Name to file so we can use during DockerMonitor Campaign Lesson later
+echo "DockerTemplate-$firstname-$number" > ${AGENTDATAPATH}//DockerTemplate.name
+
 # Create vGateway Template (Httpie must be installed: sudo apt-get install httpie)
 echo '{
 	"name": "vGatewayTemplate-'$firstname'-'$number'",
