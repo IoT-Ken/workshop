@@ -26,9 +26,10 @@ echo "This is the script: execute" >> /tmp/campaign.log
 which docker
 
 if [ $? -eq 0 ]; then
-    #echo "Docker is already installed, no need to install Docker" 
+    echo "Docker is already installed, no need to install Docker" >> /tmp/campaign.log
 else
-    #echo "Docker is not installed" 
+    echo "Docker is not installed, installing Docker" >> /tmp/campaign.log 
+    yes | sudo apt-get update
     sudo curl -sSL https://get.docker.com | sh
 fi
 
