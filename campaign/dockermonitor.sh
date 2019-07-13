@@ -20,6 +20,7 @@ AGENTDATAPATH="/opt/vmware/iotc-agent/data/data/"
 DEVICEID=$(${AGENTBINPATH}DefaultClient get-devices | head -n1 | awk '{print $1}')
 TEMPLATE=$(cat ${AGENTDATAPATH}DockerTemplate.name)
 GATEWAYNAME=$(cat ${AGENTDATAPATH}vGatewayTemplate.name | sed -e 's/Template//g')
+PULSEINSTANCE=iotc003.vmware.com
 
 #Start While Loop
 while true; do
@@ -72,37 +73,37 @@ for a in $(ls $AGENTDATAPATH | grep .container | awk -F '.' '{print $1}'); do
                     # Delete Docker Things in Pulse UI via Rest DELETE calls
                     # Identify current Pulse API version
                     APIVersion=$(curl --request GET \
-                    --url https://pulse.corp.local:443/api/versions \
+                    --url https://$PULSEINSTANCE:443/api/versions \
                     --header 'Accept: application/json;api-version=1.0' \
                     --header 'Cache-Control: no-cache' \
                     --header 'Connection: keep-alive' \
                     --header 'Content-Type: application/json' \
-                    --header 'Host: pulse.corp.local:443' \
+                    --header "'Host: $PULSEINSTANCE:443'" \
                     --header 'accept-encoding: gzip, deflate' \
                     | awk -F ':' '{print $2'} | awk -F ',' '{print $1}' | sed -e 's/"//g')
 
                     # Use Basic Auth to retrieve Bearer Token
                     BearerToken=$(curl --user admin@corp.local:VMware1! --request GET \
-                    --url https://pulse.corp.local:443/api/tokens \
+                    --url https://$PULSEINSTANCE:443/api/tokens \
                     --header ': ' \
                     --header "Accept: application/json;api-version=$APIVersion" \
                     --header 'Cache-Control: no-cache' \
                     --header 'Connection: keep-alive' \
                     --header 'Content-Type: application/json' \
-                    --header 'Host: pulse.corp.local:443' \
+                    --header "'Host: $PULSEINSTANCE:443'" \
                     --header 'accept-encoding: gzip, deflate' \
                     --header 'cache-control: no-cache' \
                     | grep accessToken | awk -F ':' '{print $2}' | awk -F ',' '{print $1}' | sed -e 's/"//g' | tr -d '\n')
 
                     # Delete Thing via Device ID
                     curl --insecure --request DELETE \
-                    --url https://pulse.corp.local:443/api/devices/$(cat ${AGENTDATAPATH}${a}.container | grep "Device Id:" | awk -F ': ' '{print $2}') \
+                    --url https://$PULSEINSTANCE:443/api/devices/$(cat ${AGENTDATAPATH}${a}.container | grep "Device Id:" | awk -F ': ' '{print $2}') \
                     --header "Accept: application/json;api-version=$APIVersion" \
                     --header "Authorization: Bearer $BearerToken" \
                     --header 'Cache-Control: no-cache' \
                     --header 'Connection: keep-alive' \
                     --header 'Content-Type: application/json' \
-                    --header 'Host: pulse.corp.local:443' \
+                    --header "'Host: $PULSEINSTANCE:443'" \
                     --header 'accept-encoding: gzip, deflate' 
 
                     # Remove .container file(s)
