@@ -21,6 +21,18 @@ cd $dirname
 echo "This is the script: execute" >> /tmp/campaign.log
 
 ################################################################################
+## Install Docker if it is not present
+################################################################################
+which docker
+
+if [ $? -eq 0 ]; then
+    #echo "Docker is already installed, no need to install Docker" 
+else
+    #echo "Docker is not installed" 
+    sudo curl -sSL https://get.docker.com | sh
+fi
+
+################################################################################
 ## Create DockerMonitor Service
 ################################################################################
 
