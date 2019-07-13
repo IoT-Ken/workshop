@@ -63,9 +63,8 @@ echo '{
   http --verify=no PUT https://$PULSEINSTANCE:443/api/device-templates/$(cat ${AGENTDATAPATH}vGatewayTemplate.id | awk -F ':' '{print $2}' | sed -e 's/"//g' | sed -e 's/}//g') \
   Accept:'application/json;api-version=1.0' \
   Authorization:"Bearer $BearerToken"
-  Connection:keep-alive \
   Content-Type:application/json \
   Host:$PULSEINSTANCE:443 \
   accept-encoding:'gzip, deflate' \
-  content-length:701 
+
   
