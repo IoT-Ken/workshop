@@ -63,3 +63,6 @@ echo '{
   http --verify=no PUT https://$PULSEINSTANCE:443/api/device-templates/$(cat ${AGENTDATAPATH}vGatewayTemplate.id | awk -F ':' '{print $2}' | sed -e 's/"//g' | sed -e 's/}//g') \
   Accept:'application/json;api-version=1.0' \
   Authorization:"Bearer $BearerToken"
+  
+echo "Modified commandFetchInterval for $TEMPLATENAME"
+echo "If $TEMPLATENAME is not the Template that you are currently using for your Gateway, this change will not have any effect."
