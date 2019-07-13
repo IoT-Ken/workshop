@@ -24,6 +24,7 @@ AGENTBINPATH="/opt/vmware/iotc-agent/bin/"
 while true; do
 
 #Issue get-commands using DefaultClient
+echo "Initiating ./DefaultClient get-commands"
 ${AGENTBINPATH}DefaultClient get-commands
 
 # Configure Interval
