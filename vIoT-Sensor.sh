@@ -17,7 +17,7 @@ CITY=Melbourne
 AGENTBINPATH="/opt/vmware/iotc-agent/bin/"
 AGENTDATAPATH="/opt/vmware/iotc-agent/data/data/"
 
-# Retrieve Gateway and SenseHat Device ID's from /opt/vmware/iotc-agent/data/data/deviceIDs.data 
+# Retrieve IoT Sensor Device ID from /opt/vmware/iotc-agent/data/data/deviceIDs.data 
 VIOTSENSORID=$(cat -v ${AGENTDATAPATH}deviceIds.data | awk -F '^' '{print $2}' | awk -F '@' '{print $2}')
 
 while true; do
