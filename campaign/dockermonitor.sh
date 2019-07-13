@@ -154,6 +154,7 @@ for i in $(docker ps -a --format "{{.Names}}"); do
             echo "Container is not registered"
             #sudo ${AGENTBINPATH}iotc-agent-cli enroll-device --template=T-DockerContainer-KO --name=T-DockerContainer-${i}-KO --parent-id=$DEVICEID
         fi
+done
 
 # Configure Collection Interval
 sleep 15
