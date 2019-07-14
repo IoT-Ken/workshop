@@ -159,6 +159,6 @@ for i in $(docker ps -a --format "{{.Names}}"); do
 done
 
 # Configure Collection Interval
-sleep 15
+sleep 30
 done
 
