@@ -83,7 +83,7 @@ for a in $(ls $AGENTDATAPATH | grep .container | awk -F '.' '{print $1}'); do
                     | awk -F ':' '{print $2'} | awk -F ',' '{print $1}' | sed -e 's/"//g')
 
                     # Use Basic Auth to retrieve Bearer Token
-                    BearerToken=$(curl --user admin@corp.local:VMware1! --request GET \
+                    BearerToken=$(curl --user ausworkshop@iotken.com:VMware1! --request GET \
                     --url https://$PULSEINSTANCE:443/api/tokens \
                     --header ': ' \
                     --header "Accept: application/json;api-version=$APIVersion" \
