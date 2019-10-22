@@ -18,7 +18,7 @@
 AGENTBINPATH="/opt/vmware/iotc-agent/bin/"
 TEMPLATE=G-RPi-KO
 GATEWAY=TestGateway-KO-001
-PULSEINSTANCE=iotc008.vmware.com
+PULSEINSTANCE=iotc002.vmware.com
 MAC_ADDR=0050563d60a0
 
 # Retrieve User Input
