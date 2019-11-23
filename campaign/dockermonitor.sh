@@ -7,9 +7,10 @@
 # |_______/ \______/   \______||__|\__\ |_______|| _| `._____|   |__|  |__|  \______/  |__| \__| |__|     |__|      \______/  | _| `._____|
 
 # Author: Ken Osborn
-# Version: 1.4
-# Last Update: 04-Jul-19
-# Purpose: Australia Workshop
+# Version: 1.5
+# Created: 04-Jul-19
+# Last Updated: 23-Nov-19
+# Purpose: Pulse Bootcamp/Workshop (updated for compatibility with Sprint 11)
 
 
 ################################################################################
@@ -17,7 +18,7 @@
 ################################################################################
 AGENTBINPATH="/opt/vmware/iotc-agent/bin/"
 AGENTDATAPATH="/opt/vmware/iotc-agent/data/data/"
-DEVICEID=$(${AGENTBINPATH}DefaultClient get-devices | head -n1 | awk '{print $1}')
+DEVICEID=$(${AGENTBINPATH}DefaultClient get-devices | sed -n 2p | awk '{print $1}')
 TEMPLATE=$(cat ${AGENTDATAPATH}DockerTemplate.name)
 GATEWAYNAME=$(cat ${AGENTDATAPATH}vGatewayTemplate.name | sed -e 's/Template//g')
 PULSEINSTANCE=iotc003.vmware.com
