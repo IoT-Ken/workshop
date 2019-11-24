@@ -1,5 +1,5 @@
 package:
-    name: DockerMonitor-Install
+    name: DockerMonitorInstall-Ken
     description: Configure DockerMonitor Service (extracts files, configures Linux service)
     version: 1.0.0
     headlessExecution: true
@@ -15,4 +15,5 @@ package:
         -   path: dockermonitor-configure.sh
         -   path: dockermonitor.sh
         -   path: dockermonitor.service
+        -   path: readme
 
