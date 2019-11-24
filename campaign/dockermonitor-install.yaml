@@ -2,6 +2,9 @@ package:
     name: DockerMonitor-Install
     description: Configure DockerMonitor Service (extracts files, configures Linux service)
     version: 1.0.0
+    headlessExecution: true
+    os: noos 
+    architecture: noarch
     manifest:
         headlessExecution: true
         lifecycle:
