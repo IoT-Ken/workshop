@@ -22,9 +22,12 @@ VIOTSENSORID=$(cat -v ${AGENTDATAPATH}deviceIds.data | awk -F '^' '{print $2}' |
 
 while true; do
 # Set and Get Python Return variables for Temperature, Humidity and Barometric Pressure
-TEMP=$(curl wttr.in/$CITY?format=3 | awk -F '+' '{print $2}' | awk -F '°' '{print $1}')
-HUMIDITY=$(curl wttr.in/$CITY?format="%h" | awk -F '%' '{print $1}') 
-PRESSURE=$(curl wttr.in/$CITY?format="%P" | awk -F 'h' '{print $1}')
+#TEMP=$(curl wttr.in/$CITY?format=3 | awk -F '+' '{print $2}' | awk -F '°' '{print $1}')
+#HUMIDITY=$(curl wttr.in/$CITY?format="%h" | awk -F '%' '{print $1}') 
+#PRESSURE=$(curl wttr.in/$CITY?format="%P" | awk -F 'h' '{print $1}')
+TEMP=34
+HUMIDITY=26
+PRESSURE=980
 
 # Utilize DefaultClient to send metrics and properties to Pulse
 sudo ${AGENTBINPATH}DefaultClient send-metric --device-id=$VIOTSENSORID --name=Temperature --type=double --value=$TEMP
